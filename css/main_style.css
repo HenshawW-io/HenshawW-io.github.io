@@ -8,44 +8,67 @@ Colorblind safe color palette from colorbrewer2.org.
 */
 
 body {
+    /* sets background color of body element to baby blue */
     background-color: #92c5de;
+    /* sets color of text in body element to blue */
     color: #0571b0;
+    /* center-justifies text in the body element */
     text-align: center;
+    /* sets all margins in the body element to 0px */
     margin: 0px;
 }
 
 h1 {
+    /* sets color of text in main header element to white */
     color: #f7f7f7;
+    /* sets padding between text and edges of textbox */
     padding: 5px;
+    /* sets all margins in the main header element to 0px */
     margin: 0px;
 }
 
 #body-container {
+    /* sets background color of body frame element to white */
     background-color: #f7f7f7;
+    /* sets maximum allowable width of an element within the body frame element */
     max-width: 1000px;
+    /* sets all margins in the body frame element */
     margin: auto;
+    /* sets height of the body frame element. "vh" unit is a percentage of viewable area */
     height: 100vh;
+    /* sets line width, style, and color of body frame border */
     border: 2px solid #f7f7f7;
+    /* allows for rounded corners. Larger pixel value means more roundedness */
     border-radius: 25px;
+    /* sets what happens when elements exceed the maximum dimensions of the area. "hidden" hides the elements */
     overflow: hidden;
 }
 
 #header {
+    /* sets background color of main header element to blue */
     background-color: #0571b0;
 }
 
 #profile-picture {
+    /* adjusts the positioning of the profile picture relative to other elements. "Left" positions the image
+    to the left of other elements */
     float: left;
 }
 
 #welcome-text {
+    /* sets padding between text and the top edge of the textbox to 25px */
     padding-top: 25px;
+    /* adjusts font size of the text to 25px */
     font-size: 25px;
 }
 
 #research-interests {
+    /* left-justifies the text */
     text-align: left;
+    /* adjusts font size of the text to 25px */
     font-size: 25px;
+    /* sets how the element is positioned. "Relative" positions the element relative to other elements  */
     position: relative;
+    /* moves the element 50 px to the right of the left edge of the area containing it */
     left: 50px;
 }

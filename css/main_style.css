@@ -72,3 +72,10 @@ h1 {
     /* moves the element 50 px to the right of the left edge of the area containing it */
     left: 50px;
 }
+
+#copyright {
+    position: absolute;
+    width: 1000px;
+    text-align: center;
+    bottom: 20px;
+}

@@ -43,4 +43,4 @@
 // arr = ['Joe', 'April', 'Mark', 'Sara'];
 uname = window.prompt("What's your name?");
 
-document.write(uname);
+document.write('<h1>Hello. Welcome to my webpage, ' + uname + '!</h1>');

@@ -40,8 +40,7 @@
 //     }
 // }
 
-arr = ['Joe', 'April', 'Mark', 'Sara'];
+// arr = ['Joe', 'April', 'Mark', 'Sara'];
+uname = window.prompt("What's your name?");
 
-for (var i = 0; i < arr.length; i++) {
-    document.writeln(arr[i], '<br>');
-}
+document.write(uname);

@@ -5,11 +5,17 @@
   <!-- All styling for this HTML document are contained in this external css
   file -->
   <link rel='stylesheet' type='text/css' href='css/main_style.css'>
+  <div id='header'>
+    <script src='javascript/external.js'></script>
+    <!-- <h1> Hello, my name is Billy Henshaw! </h1> -->
+  </div>
 </head>
 <body>
   <div id='body-container'>
     <div id='header'>
-      <script src='javascript/external.js'></script>
+      <script>
+        document.write(welcome());
+      </script>
       <!-- <h1> Hello, my name is Billy Henshaw! </h1> -->
     </div>
     <div id='profile-picture'>

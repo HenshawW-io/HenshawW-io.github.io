@@ -45,6 +45,44 @@
 
 // document.write('<h1>Hello. Welcome to my webpage, ' + uname + '!</h1>');
 
+var webmaps = 
+[
+    ['Zillow',
+    'https://www.zillow.com/homes/for_rent/',
+    'The Zillow Rental Listings map, developed by Zillow, Inc., \
+    provides users a robust spatial view of houses and apartments \
+    for rent in an area of their choosing. The application provides \
+    selection by lasso method for spatial filtering. As the main \
+    purpose is finding the ideal house/apartment for the user, \
+    there are many attribute filtering methods as well. \
+    Users can filter by number of bedrooms and bathrooms, \
+    house type, square footage, lot size, age, number of \
+    stories, basement, tours, pet policy, other amenities, \
+    type of view, number of days on the site, and any keywords. \
+    If I was signed into my Zillow account, I could save this \
+    home to my account for later viewing. One flaw I find in this \
+    web mapping application is the lack of a distance tool. \
+    What if I wanted to find homes within 30 miles of a particular \
+    city? After signing in, it would also be useful to export the \
+    user’s list of saved homes to a CSV file for offline viewing.'
+    ],
+    ['Windy Weather Map',
+    'https://www.windy.com/',
+    'The Windy Weather Map, developed by Windy, offers advanced \
+    capabilities for the visualization, tracking, and forecasting \
+    of climate and weather patterns. This application is as \
+    intuitive as it can be given the all the functionality it \
+    offers. If I were asked to redesign the application, I probably \
+    would provide an option to change the color ramps. I would also \
+    modify how the layers are presented on the main screen, as I \
+    found the two separate menus pointing to the same master panel \
+    of layers confusing. A simple bubble that presents a scrollable \
+    list of all layers would have taken up less space. However, \
+    I am aware that the paid version of this application might \
+    provide these features.'
+    ]
+];
+
 function welcome() {
     let a = 'Please enter your name';
     let b = 'Type your name here';
@@ -59,12 +97,12 @@ function welcome() {
 
 function webmap_table() {
     document.write('<table width=100%>');
-    for (var row=0; row < 2; row++) {
+    for (var row = 0; row < webmaps.length; row++) {
         document.write('<tr>');
-        for (var column=0; column < 3; column++) {
-            document.write('<td>' + row + ',' + column + '</td>');
+        for (var column = 0; column < webmaps[0].length; column++) {
+            document.write('<td>' + webmaps[row][column] + '</td>');
         }
-        document.write('<tr>');
+        document.write('</tr>');
     }
     document.write('</table>');
 }

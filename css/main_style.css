@@ -84,10 +84,16 @@ h1 {
     text-align: left;
     font-size: 25px;
     position: relative;
+    margin: 10px;
+    max-height: 50vh;
+    width: 90vh;
+    overflow-y: scroll;
 }
 
 #webmap-label {
     font-size: 25px;
-    margin-top: 5px;
+    /* margin-top: 5px;
+    margin-left: 5px; */
+    margin: 5px 0 0 5px;
     text-align: left;
 }

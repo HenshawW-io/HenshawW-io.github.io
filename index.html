@@ -5,10 +5,8 @@
   <!-- All styling for this HTML document are contained in this external css
   file -->
   <link rel='stylesheet' type='text/css' href='css/main_style.css'>
-  <div id='header'>
     <script src='javascript/external.js'></script>
     <!-- <h1> Hello, my name is Billy Henshaw! </h1> -->
-  </div>
 </head>
 <body>
   <div id='body-container'>
@@ -19,7 +17,8 @@
       <!-- <h1> Hello, my name is Billy Henshaw! </h1> -->
     </div>
     <div id='profile-picture'>
-      <img src='images/First_Photo (2).JPG' width=500px height=600px/>
+      <img src='images/First_Photo (2).JPG' width=250px height=317px/>
+      <h3 id='webmap-label'>Web Map Reviews</h3>
     </div>
     <div id='welcome-text'>
       My name is Billy Henshaw. <br>
@@ -34,6 +33,11 @@
         <li>Sustainable Development</li>
         <li>Smart Agriculture</li>
       </ul>
+    </div>
+    <div id='webmap-reviews'>
+      <script type='text/javascript'>
+        webmap_table();
+      </script>
     </div>
     <div id='copyright'>
       <script type='text/javascript'>

@@ -79,3 +79,15 @@ h1 {
     text-align: center;
     bottom: 20px;
 }
+
+#webmap-reviews {
+    text-align: left;
+    font-size: 25px;
+    position: relative;
+}
+
+#webmap-label {
+    font-size: 25px;
+    margin-top: 5px;
+    text-align: left;
+}

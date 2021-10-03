@@ -98,9 +98,15 @@ function welcome() {
 function webmap_table() {
     document.write('<table width=100%>');
     for (var row = 0; row < webmaps.length; row++) {
-        document.write('<tr>');
+        if (row % 2 == 0) {
+            document.write('<tr style="background-color: lightgray">');
+        }
+        else {
+            document.write('<tr style="background-color: darkgray">')
+        }
+
         for (var column = 0; column < webmaps[0].length; column++) {
-            document.write('<td text-align="left">' + webmaps[row][column] + '</td>');
+            document.write('<td>' + webmaps[row][column] + '</td>');
         }
         document.write('</tr>');
     }

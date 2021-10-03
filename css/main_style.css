@@ -85,7 +85,7 @@ h1 {
     font-size: 25px;
     position: relative;
     margin: 10px;
-    max-height: 50vh;
+    max-height: 51vh;
     width: 90vh;
     overflow-y: scroll;
 }

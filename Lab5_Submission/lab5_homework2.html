@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <style>
+            #map {
+                height: 400px;
+
+                width: 100%;
+            }
+        </style>
+        <script>
+            var geocoder;
+            var map;
+            function initialize() {
+                geocoder = new google.maps.Geocoder();
+                var latLng = new google.maps.LatLng(0, 0);
+                var mapOptions = {
+                    zoom: 2,
+                    center: latLng
+                };
+                map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            }
+
+            function codeAddress() {
+                var address = document.getElementById('address').value;
+                geocoder.geocode({ 'address': address }, function (
+                    results, status) {
+                    if (status == 'OK') {
+                        for (var i = 0; i < results.length; i++) {
+                            map.setCenter(results[i].geometry.location);
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[i].geometry.location
+                            });
+                        }
+                    } else {
+                        alert('Not able to locate the item searched: ' + address);
+                    }
+                });
+            }
+        </script>
+    </head>
+    <body onload="initialize()">
+        <div id='map' style='width: 1500px; height: 480px;'></div>
+        <div>
+            <input id='address' type='textbox' placeholder='Write Name Of A Place!' />
+            <input type='button' value='Geocode' onclick='codeAddress()' />
+        </div>
+        <script
+            src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCI0JSJcmmbpuiHtUTRIx23aIJno7S12Zk&callback=initialize&libraries=&v=weekly'
+            async>
+            </script>
+    </body>
+</html>

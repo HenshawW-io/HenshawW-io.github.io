@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #map {
+                height: 400px;
+        
+                width: 100%;
+            }
+        </style>
+        <title>Lab 5 Homework 1</title>
+        <link rel="shortcut icon" href="#">
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                const uluru = { lat: -25.344, lng: 131.036 };
+                // The map, centered at Uluru
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: uluru,
+                    gestureHandling: 'cooperative',
+                    mapId: 'bf8e074f166830c9'
+                });
+                const poly = new google.maps.Polyline({
+                    map: map,
+                    strokeColor: "#ffffff",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3,
+                });
+                const gon = new google.maps.Polygon({
+                    strokeColor: "#000fff",
+                    strokeOpacity: 1.0,
+                    strokeWeight: 3,
+                });
+                if (document.getElementById('geometry').value == 'polygon') {
+                    gon.setMap(map);
+                    map.addListener('click', function (clickEvent) {
+                        var path = gon.getPath();
+                        path.push(clickEvent.latLng);
+                        var marker = new google.maps.Marker({ 
+                            map: map, 
+                            position: clickEvent.latLng, 
+                            // draggable: true,
+                            // editable: true
+                        });
+                    });
+                } else {
+                    poly.setMap(map);
+                    var markerIndex = poly.getPath().length;
+                    map.addListener('click', function (clickEvent) {
+                        var path2 = poly.getPath();
+                        path2.push(clickEvent.latLng);
+                        var marker = new google.maps.Marker({
+                            map: map,
+                            position: clickEvent.latLng,
+                            // draggable: true,
+                            // editable: true
+                        });
+                    }); 
+                };
+            }
+        </script>
+    </head>
+        
+    <body>
+        <!-- The div element for the map -->
+        <div id='map'></div>
+        <!-- Async script executes immediately and must be after any DOM elements used in callback -->
+        <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI0JSJcmmbpuiHtUTRIx23aIJno7S12Zk&callback=initMap&v=weekly"
+        async
+        ></script>
+
+        <label for='geometry'>Choose a type of geometry:</label>
+        <select name='geometry' id='geometry'>
+            <option value='polyline'>Polyline</option>
+            <option value='polygon'>Polygon</option>
+        </select>
+    </body>        
+</html>

@@ -87,9 +87,13 @@ function welcome() {
     let a = 'Please enter your name';
     let b = 'Type your name here';
 
-    // A prompt box is used to prompt users to inpur a value before entering a page.
+    // A prompt box is used to prompt users to input a value before entering a page.
     user_name = window.prompt(a, b);
 
+    if (user_name == b) {
+        user_name = 'stranger'
+    }
+    
     message = '<h1>Hello, welcome to my webpage, ' + user_name + '!</h1>';
 
     return message

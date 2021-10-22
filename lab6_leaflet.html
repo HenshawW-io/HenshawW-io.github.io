@@ -11,6 +11,7 @@
         crossorigin="">
         </script>
         <script src='javascript/secret_keys.js'></script>
+        <link rel='stylesheet' type='text/css' href='css/map_style.css'>
     </head>
     <body>
         <h3>My First Webmap</h3>
@@ -22,6 +23,42 @@
                     id: 'mapbox/streets-v11',
                     accessToken: mapbox_access_token,
                 }).addTo(mymap);
+
+                // add a marker
+                var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+                // add a circle
+                var circle = L.circle([51.508, -0.11], {
+                    color: 'red',
+                    fillColor: '#f03',
+                    fillOpacity: 0.5,
+                    radius: 500,
+                }).addTo(mymap);
+
+                // add a polygon
+                var polygon = L.polygon([
+                    [51.509, -0.08],
+                    [51.503, -0.06],
+                    [51.51, -0.047]
+                ]).addTo(mymap);
+
+                // add popup windows for each object
+                marker.bindPopup('<b>Hello world!</b><br>I am a popup.').openPopup();
+                circle.bindPopup('I am a circle.');
+                polygon.bindPopup('I am a polygon.');
+
+                // change the zoom on click for each object
+                marker.on('click', function(e) {
+                    mymap.setView(e.latlng, 14);
+                });
+
+                circle.on('click', function (e) {
+                    mymap.setView(e.latlng, 13);
+                });
+
+                polygon.on('click', function (e) {
+                    mymap.setView(e.latlng, 13);
+                });
             </script>  
         </div>
     </body>

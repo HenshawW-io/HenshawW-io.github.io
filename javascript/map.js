@@ -1,13 +1,18 @@
 var mymap = L.map('mapid', {
     fullscreenControl: true
 });
-var options = {
-    key: geocoder_api_key,
-    limit: 10
-};
 
-var control = L.Control.openCageSearch(options).addTo(mymap);
-/* MAPBOX TILE LAYER
+/* Create variable named `geocoder_api_key` assigned 
+to your own OpenCageData Geocoding API before uncommenting
+// var options = {
+//     key: geocoder_api_key,
+//     limit: 10
+// };
+// var control = L.Control.openCageSearch(options).addTo(mymap);
+*/
+
+/* MAPBOX TILE LAYER: Create variable named `mapbox_access_token` assigned 
+to your own MapBox API key before uncommenting
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     maxZoom: 18,
     id: 'mapbox/satellite-streets-v11',

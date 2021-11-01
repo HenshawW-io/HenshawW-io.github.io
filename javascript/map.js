@@ -236,4 +236,4 @@ for (var i = 0; i < contentString.length; i++) {
 }
 mymap.setView([0, 0], 1);
 
-L.Control.mousePosition().addTo(mymap);
+L.control.mousePosition().addTo(mymap);

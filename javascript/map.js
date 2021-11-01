@@ -1,4 +1,6 @@
-var mymap = L.map('mapid');
+var mymap = L.map('mapid', {
+    fullscreenControl: true
+});
 var options = {
     key: geocoder_api_key,
     limit: 10
@@ -222,11 +224,16 @@ var symbols = [
     "../Lab5_Submission/mapiconscollection-markers/symbol_dollar.png"
 ];
 
+var myRepeatingMarkers = L.gridLayer.repeatedMarkers().addTo(mymap);
+
 for (var i = 0; i < contentString.length; i++) {
     var myIcon = L.icon({iconUrl: symbols[i]});
     var marker = L.marker(
         sevenWondersCoords[i],
         {icon: myIcon}
-        ).addTo(mymap).bindPopup(contentString[i]);
+        ).bindPopup(contentString[i]);
+    myRepeatingMarkers.addMarker(marker);
 }
 mymap.setView([0, 0], 1);
+
+L.Control.mousePosition().addTo(mymap);

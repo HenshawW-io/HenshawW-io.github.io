@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to MapView - Create a 2D map</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.21/"></script>
+    <script>
+        // create a function to randomize the center of the map
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+        // For 2d map
+        require(["esri/config", "esri/Map", "esri/views/MapView", 'esri/widgets/CoordinateConversion'], (esriConfig, Map, MapView, CoordinateConversion) => {
+
+            esriConfig.apiKey = "AAPKb85dfe08fd5548fcb3c9b47e9ef2050dMdmbjN4mJGmIOJR3DNgqZqgqP-T8pfgCMkw-dYFAtdnyAC2rQYqcmXz1RAiE4gwZ";
+
+            const map = new Map({
+                basemap: 'dark-gray-vector',
+            });
+            const view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map, // References the map object created in step 3
+                center: [getRandomInt(-180), getRandomInt(85)],
+                zoom: 3
+            });
+
+            const simpleMarkerSymbol = {
+                type: 'simple-marker',
+                color: [255, 72, 51],
+                outline: {
+                    color: [235, 255, 51],
+                    width: 2
+                }
+            };
+
+            let ccWidget = new CoordinateConversion({
+                view: view,
+                locationSymbol: simpleMarkerSymbol, // changes the symbol of points in Capture Mode
+                headingLevel: 1, // what level header do the panel titles show up as? Default is 4
+                visibleElements: { // allows for showing or hiding buttons in the converter
+                    settingsButton: false // makes settings button invisible
+                },
+                // orientation: 'expand-up', // does not work
+                // mode: 'capture' // does not work
+            });
+
+            view.ui.add(ccWidget, 'top-right'); // this adds the Coordinate Converter to the top right of the MapView
+        });
+
+            // For 3d map
+            // require(["esri/Map", "esri/views/SceneView"], (Map, SceneView) => {
+            //     const map = new Map({
+            //         basemap: "topo-vector",
+            //         ground: "world-elevation"
+            //     });
+            //     const view = new SceneView({
+            //         container: "viewDiv", // Reference to the DOM node that will contain the view
+            //         map: map // References the map object created in step 3
+            //     });
+            // });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>

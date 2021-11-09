@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Compass Functionality for ArcGIS API</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.21/"></script>
+    <script>
+        // create a function to randomize the center of the map
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+    }
+        // For 2d map
+
+        // add "esri/widgets/Compass" and add Compass 
+        // argument to include Compass functionality
+        require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Compass"], (esriConfig, Map, MapView, Compass) => {
+
+            esriConfig.apiKey = "AAPKb85dfe08fd5548fcb3c9b47e9ef2050dMdmbjN4mJGmIOJR3DNgqZqgqP-T8pfgCMkw-dYFAtdnyAC2rQYqcmXz1RAiE4gwZ";
+
+            const map = new Map({
+                basemap: 'hybrid',
+            });
+            const view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map, // References the map object created in step 3
+                center: [getRandomInt(180), getRandomInt(85)],
+                zoom: 3
+            });
+
+            let compass = new Compass({
+                view: view
+            });
+            view.ui.add(compass, 'top-right'); // this adds the compass to the MapView at the position described by the "position" argument ('top-right')
+            view.ui.add(compass, 'bottom-right'); // adds compass to bottom right corner of the MapView
+            view.ui.add(compass, 'top-left'); // adds compass to top left corner of the MapView
+            view.ui.add(compass, 'bottom-left'); // adds compass to bottom left corner of the MapView
+            // cannot add multiple compasses (except an additional one after the default in SceneView)
+            //  last position argument takes precedence of all before it
+        });
+
+        // For 3d map
+        // require(["esri/config", "esri/Map", "esri/views/SceneView", "esri/widgets/Compass"], (esriConfig, Map, SceneView, Compass) => {
+        //     const map = new Map({
+        //         basemap: "topo-vector",
+        //         ground: "world-elevation"
+        //     });
+        //     const view = new SceneView({
+        //         container: "viewDiv", // Reference to the DOM node that will contain the view
+        //         map: map // References the map object created in step 3
+
+        //     });
+        //     let compass = new Compass({
+        //        view: view
+        //     });
+        //     view.ui.add(compass, 'top-right'); // the compass is default in SceneView, thus adding it as a plug-in does not make sense
+        //     view.ui.add(compass, 'bottom-right'); // adds compass to bottom right corner of theScenepView
+        //     view.ui.add(compass, 'top-left'); // adds compass to top left corner of the SceneView
+        //     view.ui.add(compass, 'bottom-left');  // adds compass to bottom left corner of the SceneView
+        // cannot add multiple compasses (except an additional one after the default in SceneView)
+        // last position argument takes precedence of all before it
+        // });
+
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>

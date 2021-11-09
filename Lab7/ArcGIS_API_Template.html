@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Intro to MapView - Create a 2D map</title>
+    <style>
+        html,
+        body,
+        #viewDiv {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.21/esri/themes/light/main.css" />
+    <script src="https://js.arcgis.com/4.21/"></script>
+    <script>
+        // For 2d map
+        require(["esri/config", "esri/Map", "esri/views/MapView"], (esriConfig, Map, MapView) => {
+
+            esriConfig.apiKey = "AAPKb85dfe08fd5548fcb3c9b47e9ef2050dMdmbjN4mJGmIOJR3DNgqZqgqP-T8pfgCMkw-dYFAtdnyAC2rQYqcmXz1RAiE4gwZ";
+
+            const map = new Map({
+                basemap: 'arcgis-topographic',
+            });
+            const view = new MapView({
+                container: "viewDiv", // Reference to the DOM node that will contain the view
+                map: map, // References the map object created in step 3
+            });
+        });
+
+            // For 3d map
+            // require(["esri/Map", "esri/views/SceneView"], (Map, SceneView) => {
+            //     const map = new Map({
+            //         basemap: "topo-vector",
+            //         ground: "world-elevation"
+            //     });
+            //     const view = new SceneView({
+            //         container: "viewDiv", // Reference to the DOM node that will contain the view
+            //         map: map // References the map object created in step 3
+            //     });
+            // });
+    </script>
+</head>
+
+<body>
+    <div id="viewDiv"></div>
+</body>
+
+</html>
